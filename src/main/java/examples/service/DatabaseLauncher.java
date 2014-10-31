@@ -1,12 +1,12 @@
-package examples;
+package examples.service;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Hello world!
- *
+ * Service for launching database according to defined database (see property file).
  */
-public class App {
+public class DatabaseLauncher {
+
     public static void main( String[] args ) {
         System.out.println( "Hello World!" );
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
