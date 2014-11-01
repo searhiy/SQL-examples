@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration debug="false">
+
+    <contextName>SQL-examples</contextName>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d %5p | %t | %-30logger{0} | %m %n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="DAILY_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/sql-examples.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/sql-examples.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{0} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name='org.springframework' level="ERROR" />
+    <logger name='org.hibernate' level="ERROR" />
+    <logger name='com.jolbox.bonecp' level="ERROR" />
+    <logger name='org.jboss.logging' level="ERROR" />
+    <logger name='ch.qos.logback' level="ERROR" />
+
+    <root level="DEBUG">
+        <appender-ref ref='CONSOLE'/>
+        <appender-ref ref='DAILY_FILE' />
+    </root>
+
+</configuration>
