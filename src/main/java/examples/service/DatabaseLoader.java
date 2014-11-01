@@ -8,7 +8,7 @@ public class DatabaseLoader {
     /**
      * Loading data from comma separated file using domains defined in examples.domain package.
      */
-    public void loadDataIntoDB (){
+    public void loadDataIntoDB () {
 
     }
 }

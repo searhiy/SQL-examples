@@ -8,11 +8,20 @@
   <packaging>jar</packaging>
 
   <name>sql</name>
-  <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <spring.core.version>4.1.1.RELEASE</spring.core.version>
+
+      <spring.data.jpa.version>1.7.1.RELEASE</spring.data.jpa.version>
+      <hibernate.entitymanager.version>4.3.7.Final</hibernate.entitymanager.version>
+      <mysql.connector.version>5.1.33</mysql.connector.version>
+      <hsqldb.connector.version>2.3.2</hsqldb.connector.version>
+
+      <slf4j.version>1.7.7</slf4j.version>
+      <logback.version>1.1.2</logback.version>
+
+      <bonecp.version>0.8.0.RELEASE</bonecp.version>
   </properties>
 
   <dependencies>
@@ -40,6 +49,69 @@
                   <artifactId>commons-logging</artifactId>
               </exclusion>
           </exclusions>-->
+      </dependency>
+
+      <!-- Spring Data -->
+      <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-jpa</artifactId>
+          <version>${spring.data.jpa.version}</version>
+      </dependency>
+      <!-- Spring XML to/back object -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-oxm</artifactId>
+          <version>${spring.core.version}</version>
+          <type>jar</type>
+      </dependency>
+
+      <!-- Hibernate and JPA -->
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>${hibernate.entitymanager.version}</version>
+      </dependency>
+
+      <!--  MySQL Connector -->
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>${mysql.connector.version}</version>
+      </dependency>
+
+      <!-- Database pooling -->
+      <dependency>
+          <groupId>com.jolbox</groupId>
+          <artifactId>bonecp</artifactId>
+          <version>${bonecp.version}</version>
+      </dependency>
+
+      <!-- Logging -->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-core</artifactId>
+          <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-access</artifactId>
+          <version>${logback.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.hsqldb</groupId>
+          <artifactId>hsqldb</artifactId>
+          <version>${hsqldb.connector.version}</version>
       </dependency>
   </dependencies>
 </project>
