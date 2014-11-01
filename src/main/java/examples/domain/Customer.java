@@ -1,6 +1,12 @@
 package examples.domain;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by serhii on 01.11.14.
@@ -12,17 +18,28 @@ public class Customer {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "address")
-    private String address;
+    // unidirectional relationships
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
-    public long getId() {
+    public Customer(Builder builder){
+        this.name = builder.name;
+        this.address = builder.address;
+    }
+
+    public Customer() {
+        ;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -34,11 +51,32 @@ public class Customer {
         this.name = name;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
+
+    public static class Builder {
+        private String name;
+        private Address address;
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setAddress(Address address) {
+            this.address = address;
+            return this;
+        }
+
+        public Customer build() {
+            return new Customer(this);
+        }
+    }
+
+
 }
