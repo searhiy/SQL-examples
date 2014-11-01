@@ -1,4 +1,4 @@
-package examples.service;
+package examples;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,5 +10,9 @@ public class DatabaseLauncher {
     public static void main( String[] args ) {
         System.out.println( "Hello World!" );
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        while (true){
+
+        }
     }
 }

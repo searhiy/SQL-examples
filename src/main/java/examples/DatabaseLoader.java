@@ -1,4 +1,4 @@
-package examples.service;
+package examples;
 
 /**
  * Created by serhii on 31.10.14.
