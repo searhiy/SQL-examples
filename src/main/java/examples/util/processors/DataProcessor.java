@@ -1,4 +1,4 @@
-package examples.util;
+package examples.util.processors;
 
 import java.util.List;
 

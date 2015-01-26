@@ -1,7 +1,7 @@
 package examples.service;
 
-import examples.domain.Address;
-import examples.repository.AddressRepository;
+import examples.domain.Client;
+import examples.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -11,15 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by serhii on 01.11.14.
  */
 @Transactional
-@Service("address_service")
+@Service("client_service")
 @Repository
-public class AddressServiceImpl implements AddressService {
+public class ClientServiceImpl implements ClientService {
 
     @Autowired
-    private AddressRepository addressRepository;
+    private ClientRepository clientRepository;
 
     @Override
-    public Address saveAddress(Address address) {
-        return addressRepository.save(address);
+    public void saveClients(Iterable<Client> clients) {
+        clientRepository.save(clients);
     }
 }

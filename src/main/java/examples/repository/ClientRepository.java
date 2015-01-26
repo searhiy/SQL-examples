@@ -1,11 +1,11 @@
 package examples.repository;
 
-import examples.domain.Customer;
+import examples.domain.Client;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  * Created by serhii on 01.11.14.
  */
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+public interface ClientRepository extends CrudRepository<Client, Long> {
 
 }
