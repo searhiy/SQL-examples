@@ -3,17 +3,30 @@ package examples.util;
 import examples.domain.Client;
 import examples.domain.Order;
 import examples.domain.Product;
+import examples.repository.ClientRepository;
 import examples.util.processors.ClientProcessor;
 import examples.util.processors.GroupProcessor;
 import examples.util.processors.OrderProcessor;
 import examples.util.processors.ProductProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
  * Created by serhii on 01.11.14.
  */
-public class DataLoader {
+@Component
+public class FixtureDataLoader {
+
+    @Autowired
+    private ClientRepository clientRepository;
+
+    @PostConstruct
+    private void loadData(){
+        clientRepository.save(loadClients());
+    }
 
     public static List<Client> loadClients() {
         return (List<Client>)CSVReader.readCsv("data/customer/client.csv", new ClientProcessor());

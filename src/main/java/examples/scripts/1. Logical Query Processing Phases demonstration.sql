@@ -1,2 +1,2 @@
 -- simple select
-select * from customer;
+select * from clients;
