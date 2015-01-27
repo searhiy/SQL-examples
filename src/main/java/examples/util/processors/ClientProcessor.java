@@ -14,7 +14,6 @@ public class ClientProcessor implements DataProcessor {
 
     @Override
     public void processData(String[] data) {
-        //Collections.shuffle(addresses);
         Client client = new Client.Builder().
                 setName(data[0]).
                 setSurname(data[1]).

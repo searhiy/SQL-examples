@@ -13,10 +13,10 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
 
-    private static final String DATE_PATTERN = "EEEE, MMM dd, yyyy HH:mm:ss a";
+    private static final String DATE_PATTERN = "yyyy MMM dd HH:mm:ss";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
     private long id;
     @Column(name = "order_date", nullable = false)

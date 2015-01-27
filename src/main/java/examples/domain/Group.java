@@ -1,10 +1,14 @@
 package examples.domain;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by serhii on 26.01.15.
+ * Important information for PostgreSQL and Oracle databases
+ * http://softwarecave.org/2014/08/02/primary-key-generators-in-jpa/
+ *
  */
 @Entity
 @Table(name = "groups")
@@ -12,7 +16,7 @@ public class Group {
 
     @Id
     @Column(name = "group_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long groupId;
 
     @Column(name = "name")
@@ -20,7 +24,15 @@ public class Group {
 
     @ManyToMany
     @JoinTable(name="group_client_mapping", joinColumns={@JoinColumn(name="group_id")}, inverseJoinColumns={@JoinColumn(name="client_id")})
-    private List<Client> clients;
+    private Set<Client> clients = new HashSet<>();
+
+    public Group(){
+        ;
+    }
+
+    public Group(Builder builder){
+        this.name = builder.name;
+    }
 
     public long getGroupId() {
         return groupId;
@@ -38,11 +50,26 @@ public class Group {
         this.name = name;
     }
 
-    public List<Client> getClients() {
+    public Set<Client> getClients() {
         return clients;
     }
 
-    public void setClients(List<Client> clients) {
+    public void setClients(Set<Client> clients) {
         this.clients = clients;
+    }
+
+    public void addClient(Client client){
+        clients.add(client);
+    }
+
+    public static class Builder {
+        private String name;
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+        public Group build() {
+            return new Group(this);
+        }
     }
 }
